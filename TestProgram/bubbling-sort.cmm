@@ -1,0 +1,19 @@
+int i[20];
+int j = 0;
+for(j = 0;j<20;j = j + 1)
+{
+    i[j] = j+10;
+}
+int k = 0;
+for(j = 0; j<20;j = j + 1)
+{
+    for(k = j;k<20;k = k + 1)
+    {
+        if(i[k] >= i[j])
+        {
+            int t = i[k];
+            i[k] = i[j];
+            i[j] = t;
+        }
+    }
+}

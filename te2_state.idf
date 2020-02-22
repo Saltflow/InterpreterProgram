@@ -1,0 +1,12 @@
+None Terminal:
+E|T|F
+
+Terminal:
++|*|(|)|id
+
+E := E + T
+E := T
+T := T * F
+T := F
+F := ( E )
+F := id

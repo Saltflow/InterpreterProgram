@@ -1,0 +1,29 @@
+    ;
+   <
+   >
+   ==
+   <>
+   >=	// expected to implement
+   <= 	// expected to implement
+   &&	// expected to implement
+   || 	// expected to implement   
+
+   
+   (
+   }
+   )
+   [
+   }
+   ]
+   =
+   '	// expected to implement
+   "	// expected to implement
+   \n	// expected to implement
+   \r	// expected to implement
+   \t	// expected to implement
+
+    /
+   +
+   -
+   *
+   // wrong form

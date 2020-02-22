@@ -1,0 +1,10 @@
+None Terminal:
+SS|S|C
+
+Terminal:
+c|d
+
+SS := S
+S := C C
+C := c C
+C := d

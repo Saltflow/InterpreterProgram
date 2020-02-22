@@ -1,0 +1,52 @@
+None Terminal:
+G|<expr>|<block>|<codes>|<statement>|<as>|<ifcon>|<elsecon>|<loop>|<idn>|<func>|<declare>|<sid>
+
+Terminal:
+<if>|<else>|<for>|<while>|<id>|<op>|<assign>|<type>|<input>|<output>|{|}|;|(|)|[|]|,|<resbool>|<const>|<return>
+
+G := <codes>
+
+<codes> := <codes> <block> | pass2
+<codes> := <block> | pass
+<codes> := <func> | pass
+<block> := { <codes> } | addTable
+<block> := <statement> ; | pass
+<statement> := <expr> | pass
+<statement> := <declare> | pass
+<statement> := <input> ( <sid> ) | input
+<statement> := <output> ( <sid> ) | output
+
+<expr> := <idn> <op> <idn> | Parseexpr 1 3 2
+<expr> := <expr> <op> <idn> | Parseexpr 1 3 2
+<expr> := <idn> <op> <const> | Parseexpr 1 3 2
+<expr> := <expr> <op> <const> | Parseexpr 1 3 2
+<expr> := <resbool> | assin 0 1
+<expr> := <as> | fetch 0 1
+<expr> := <idn> | fetch 0 1
+<expr> := <const> | fetch 0 1
+<expr> := <op> <const> | Parseexpr 1 3 2
+<expr> := <op> <idn> | signum
+<expr> := ( <expr> ) | fetch 0 2
+
+<as> := <idn> <assign> <expr> | assign 1 3
+<as> := <declare> <assign> <expr> | assign 1 3
+
+<idn> := <id> [ <const> ] | getPoint 1 3
+<idn> := <id> [ <idn> ] | getPoint 1 3
+<idn> := <id> | getMem 0 1
+<sid> := <idn> | pushStack
+<sid> := <idn> , <sid> | pushStack
+
+<declare> := <type> <idn> | addID 1 2
+
+<block> := <ifcon> | fetch 0 1
+<block> := <elsecon> | fetch 0 1
+<block> := <loop> | fetch 0 1
+
+<func> := <type> <idn> ( <declare> ) { <block> <return> <expr>; } | fetch 0 1
+
+<ifcon>  := <if> ( <expr> ) <block> | ifcon 3 5
+<elsecon> := <ifcon> <else> <block> | ifcon 1 3
+
+<loop> := <for> ( <expr> ; <expr> ; <expr> ) <block> | for 5 9 7 
+<loop> := <while> ( <expr> ) <block> | while 3 5
